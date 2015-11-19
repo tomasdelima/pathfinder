@@ -25,10 +25,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-size: 0;
 
   .ability, .skill {
-    .name, .total, .modifier, .score, .temporary, .rank, .misc {
+    .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
       /*border: 1px solid red;*/
-      line-height: 23px;
-      font-size: 15px;
       display: inline-block;
 
       &, input {
@@ -49,23 +47,42 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 
   .ability {
-    .name { width: 28%; }
-    .total, .modifier, .score, .temporary { width: 18%; }
+    .name { width: 25%; }
+    .total, .modifier, .racial, .score, .temporary { width: 15%; }
   }
 
   .skill {
-    .name, .total, .modifier, .rank, .misc {
-      font-size: 12px;
-    }
-
     .name { width: 40%; }
     .total, .modifier, .rank, .misc { width: 15%; }
   }
 }
 
-.item-divider .skill {
-  .total, .modifier, .rank, .misc {
+.item-divider {
+  .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
     white-space: normal;
     line-height: 16px;
+    font-size: 15px;
+  }
+}
+
+.item-body {
+  .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
+    font-size: 12px;
+  }
+
+  .skill .modifier {
+    position: relative;
+    top: 9px;
+
+    .value, .ability { position: absolute; }
+    .value { right: 70%; }
+    .ability { left: 40%; }
+  }
+
+  .ability, .skill {
+    .score, .temporary, .rank, .misc {
+      position: relative;
+      top: 2px;
+    }
   }
 }

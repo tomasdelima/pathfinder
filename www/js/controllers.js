@@ -1,9 +1,14 @@
 angular.module('pathfinder.controllers', [])
-.controller('CharacterCtrl', function($scope, CharacterFactory, SkillsService) {
+.controller('CharacterCtrl', function($scope, CharacterFactory, SkillsService, RacesService) {
   $scope.getAttributeTotal = function (attributeName) {
     return $scope.attributes[attributeName].reduce(function(m, v) {
       return (Number(m) || 0) + (Number(v) || 0)
-    })
+    }) + Number($scope.getAttributeRacialBonus(attributeName))
+  }
+
+  $scope.getAttributeRacialBonus = function (attributeName) {
+    var racialBonus = Number(RacesService.getRace("Half Orc").bonus[attributeName]) || ''
+    return (racialBonus > 0 ? '+' : '') + racialBonus
   }
 
   $scope.getAttributeModifier = function (attributeName) {
@@ -17,8 +22,12 @@ angular.module('pathfinder.controllers', [])
     })) + Number($scope.getSkillModifier(skillName))
   }
 
+  $scope.getSkillAbility = function (skillName) {
+    return SkillsService.skillAbility(skillName)
+  }
+
   $scope.getSkillModifier = function (skillName) {
-    return $scope.getAttributeModifier(SkillsService.skillAbility(skillName))
+    return $scope.getAttributeModifier($scope.getSkillAbility(skillName))
   }
 
   $scope.saveCharacter = function () {

@@ -23,15 +23,15 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     templateUrl: 'templates/tabs.html'
   })
 
-  .state('tab.attributes', {
-    url: '/attributes',
+  .state('tab.stats', {
+    url: '/stats',
     views: {
-      'attributes': {
-        templateUrl: 'templates/attributes.html',
+      'stats': {
+        templateUrl: 'templates/stats.html',
         controller: 'CharacterCtrl'
       }
     }
   })
 
-  $urlRouterProvider.otherwise('/tab/attributes')
+  $urlRouterProvider.otherwise('/tab/stats')
 })

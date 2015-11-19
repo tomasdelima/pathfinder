@@ -1,21 +1,18 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body abilities">
-        <div class="ability">
-          <span class="name">Ability</span>
-          <span class="total">Total</span>
-          <span class="score">Score</span>
-          <span class="temporary">Temp. Bonus/Penalty</span>
-        </div>
-        <div class="ability" ng-repeat="(attributeName, attributeValue) in attributes">
-          <span class="name">{{attributeName}}</span>
-          <span class="total">{{attributeValue[0] + attributeValue[1]}}</span>
-          <input class="score" ng-model="attributeValue[0]">
-          <input class="temporary" ng-model="attributeValue[1]">
-        </div>
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+<div class="item item-divider abilities">
+  <div class="ability">
+    <span class="name">Ability</span>
+    <span class="total">Total</span>
+    <span class="modifier">Modifier</span>
+    <span class="score">Score</span>
+    <span class="temporary">Temporary</span>
+  </div>
+</div>
+<div class="item item-body abilities">
+  <div class="ability" ng-repeat="(attributeName, attributeValues) in attributes">
+    <span class="name">{{attributeName}}</span>
+    <span class="total">{{getAttributeTotal(attributeName)}}</span>
+    <span class="modifier">{{getAttributeModifier(attributeName)}}</span>
+    <span class="score"><input ng-change="saveCharacter()" ng-model="attributeValues[0]"></span>
+    <span class="temporary"><input ng-change="saveCharacter()" ng-model="attributeValues[1]"></span>
+  </div>
+</div>

@@ -21,16 +21,51 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-.ability {
-  .name , .total, .score, .temporary {
-    display: inline-block;
+.abilities, .skills {
+  font-size: 0;
+
+  .ability, .skill {
+    .name, .total, .modifier, .score, .temporary, .rank, .misc {
+      /*border: 1px solid red;*/
+      line-height: 23px;
+      font-size: 15px;
+      display: inline-block;
+
+      &, input {
+        height: 25px;
+        text-align: center;
+
+        &.name {
+          text-align: left;
+        }
+      }
+
+      input {
+        width: 50%;
+        top: -1px;
+        position: relative;
+      }
+    }
   }
 
-  .name {
-    width: 40%;
+  .ability {
+    .name { width: 28%; }
+    .total, .modifier, .score, .temporary { width: 18%; }
   }
 
-  .total, .score, .temporary {
-    width: 20%;
+  .skill {
+    .name, .total, .modifier, .rank, .misc {
+      font-size: 12px;
+    }
+
+    .name { width: 40%; }
+    .total, .modifier, .rank, .misc { width: 15%; }
+  }
+}
+
+.item-divider .skill {
+  .total, .modifier, .rank, .misc {
+    white-space: normal;
+    line-height: 16px;
   }
 }

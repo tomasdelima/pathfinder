@@ -9089,11 +9089,33 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.ability .name, .ability .total, .ability .score, .ability .temporary {
-  display: inline-block; }
+.abilities, .skills {
+  font-size: 0; }
+  .abilities .ability .name, .abilities .ability .total, .abilities .ability .modifier, .abilities .ability .score, .abilities .ability .temporary, .abilities .ability .rank, .abilities .ability .misc, .abilities .skill .name, .abilities .skill .total, .abilities .skill .modifier, .abilities .skill .score, .abilities .skill .temporary, .abilities .skill .rank, .abilities .skill .misc, .skills .ability .name, .skills .ability .total, .skills .ability .modifier, .skills .ability .score, .skills .ability .temporary, .skills .ability .rank, .skills .ability .misc, .skills .skill .name, .skills .skill .total, .skills .skill .modifier, .skills .skill .score, .skills .skill .temporary, .skills .skill .rank, .skills .skill .misc {
+    /*border: 1px solid red;*/
+    line-height: 23px;
+    font-size: 15px;
+    display: inline-block; }
+    .abilities .ability .name, .abilities .ability .name input, .abilities .ability .total, .abilities .ability .total input, .abilities .ability .modifier, .abilities .ability .modifier input, .abilities .ability .score, .abilities .ability .score input, .abilities .ability .temporary, .abilities .ability .temporary input, .abilities .ability .rank, .abilities .ability .rank input, .abilities .ability .misc, .abilities .ability .misc input, .abilities .skill .name, .abilities .skill .name input, .abilities .skill .total, .abilities .skill .total input, .abilities .skill .modifier, .abilities .skill .modifier input, .abilities .skill .score, .abilities .skill .score input, .abilities .skill .temporary, .abilities .skill .temporary input, .abilities .skill .rank, .abilities .skill .rank input, .abilities .skill .misc, .abilities .skill .misc input, .skills .ability .name, .skills .ability .name input, .skills .ability .total, .skills .ability .total input, .skills .ability .modifier, .skills .ability .modifier input, .skills .ability .score, .skills .ability .score input, .skills .ability .temporary, .skills .ability .temporary input, .skills .ability .rank, .skills .ability .rank input, .skills .ability .misc, .skills .ability .misc input, .skills .skill .name, .skills .skill .name input, .skills .skill .total, .skills .skill .total input, .skills .skill .modifier, .skills .skill .modifier input, .skills .skill .score, .skills .skill .score input, .skills .skill .temporary, .skills .skill .temporary input, .skills .skill .rank, .skills .skill .rank input, .skills .skill .misc, .skills .skill .misc input {
+      height: 25px;
+      text-align: center; }
+      .abilities .ability .name.name, .abilities .ability .name input.name, .abilities .ability .total.name, .abilities .ability .total input.name, .abilities .ability .modifier.name, .abilities .ability .modifier input.name, .abilities .ability .score.name, .abilities .ability .score input.name, .abilities .ability .temporary.name, .abilities .ability .temporary input.name, .abilities .ability .rank.name, .abilities .ability .rank input.name, .abilities .ability .misc.name, .abilities .ability .misc input.name, .abilities .skill .name.name, .abilities .skill .name input.name, .abilities .skill .total.name, .abilities .skill .total input.name, .abilities .skill .modifier.name, .abilities .skill .modifier input.name, .abilities .skill .score.name, .abilities .skill .score input.name, .abilities .skill .temporary.name, .abilities .skill .temporary input.name, .abilities .skill .rank.name, .abilities .skill .rank input.name, .abilities .skill .misc.name, .abilities .skill .misc input.name, .skills .ability .name.name, .skills .ability .name input.name, .skills .ability .total.name, .skills .ability .total input.name, .skills .ability .modifier.name, .skills .ability .modifier input.name, .skills .ability .score.name, .skills .ability .score input.name, .skills .ability .temporary.name, .skills .ability .temporary input.name, .skills .ability .rank.name, .skills .ability .rank input.name, .skills .ability .misc.name, .skills .ability .misc input.name, .skills .skill .name.name, .skills .skill .name input.name, .skills .skill .total.name, .skills .skill .total input.name, .skills .skill .modifier.name, .skills .skill .modifier input.name, .skills .skill .score.name, .skills .skill .score input.name, .skills .skill .temporary.name, .skills .skill .temporary input.name, .skills .skill .rank.name, .skills .skill .rank input.name, .skills .skill .misc.name, .skills .skill .misc input.name {
+        text-align: left; }
+    .abilities .ability .name input, .abilities .ability .total input, .abilities .ability .modifier input, .abilities .ability .score input, .abilities .ability .temporary input, .abilities .ability .rank input, .abilities .ability .misc input, .abilities .skill .name input, .abilities .skill .total input, .abilities .skill .modifier input, .abilities .skill .score input, .abilities .skill .temporary input, .abilities .skill .rank input, .abilities .skill .misc input, .skills .ability .name input, .skills .ability .total input, .skills .ability .modifier input, .skills .ability .score input, .skills .ability .temporary input, .skills .ability .rank input, .skills .ability .misc input, .skills .skill .name input, .skills .skill .total input, .skills .skill .modifier input, .skills .skill .score input, .skills .skill .temporary input, .skills .skill .rank input, .skills .skill .misc input {
+      width: 50%;
+      top: -1px;
+      position: relative; }
+  .abilities .ability .name, .skills .ability .name {
+    width: 28%; }
+  .abilities .ability .total, .abilities .ability .modifier, .abilities .ability .score, .abilities .ability .temporary, .skills .ability .total, .skills .ability .modifier, .skills .ability .score, .skills .ability .temporary {
+    width: 18%; }
+  .abilities .skill .name, .abilities .skill .total, .abilities .skill .modifier, .abilities .skill .rank, .abilities .skill .misc, .skills .skill .name, .skills .skill .total, .skills .skill .modifier, .skills .skill .rank, .skills .skill .misc {
+    font-size: 12px; }
+  .abilities .skill .name, .skills .skill .name {
+    width: 40%; }
+  .abilities .skill .total, .abilities .skill .modifier, .abilities .skill .rank, .abilities .skill .misc, .skills .skill .total, .skills .skill .modifier, .skills .skill .rank, .skills .skill .misc {
+    width: 15%; }
 
-.ability .name {
-  width: 40%; }
-
-.ability .total, .ability .score, .ability .temporary {
-  width: 20%; }
+.item-divider .skill .total, .item-divider .skill .modifier, .item-divider .skill .rank, .item-divider .skill .misc {
+  white-space: normal;
+  line-height: 16px; }

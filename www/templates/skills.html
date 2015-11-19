@@ -1,0 +1,18 @@
+<div class="item item-divider skills">
+  <div class="skill">
+    <span class="name">Skill</span>
+    <span class="total">Total</span>
+    <span class="modifier">Ability Modifier</span>
+    <span class="rank">Rank</span>
+    <span class="misc">Misc. Modifier</span>
+  </div>
+</div>
+<div class="item item-body skills">
+  <div class="skill" ng-repeat="(skillName, skillValues) in skills">
+    <span class="name">{{skillName}}</span>
+    <span class="total">{{getSkillTotal(skillName)}}</span>
+    <span class="modifier">{{getSkillModifier(skillName)}}</span>
+    <span class="rank"><input ng-change="saveCharacter()" ng-model="skillValues[0]"></span>
+    <span class="misc"><input ng-change="saveCharacter()" ng-model="skillValues[1]"></span>
+  </div>
+</div>

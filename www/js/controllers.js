@@ -7,7 +7,7 @@ angular.module('pathfinder.controllers', [])
   }
 
   $scope.getAttributeRacialBonus = function (attributeName) {
-    var racialBonus = Number(RacesService.getRace("Half Orc").bonus[attributeName]) || ''
+    var racialBonus = $scope.race.bonus[attributeName] || ''
     return (racialBonus > 0 ? '+' : '') + racialBonus
   }
 
@@ -31,10 +31,46 @@ angular.module('pathfinder.controllers', [])
   }
 
   $scope.save = CharacterService.save
-  CharacterService.load($scope)
+  $scope.$on('$ionicView.afterEnter', function(){
+    CharacterService.load($scope)
+  });
 })
 
-.controller('ProfileCtrl', function ($scope, CharacterService) {
+.controller('ProfileCtrl', function ($scope, $ionicModal, CharacterService, RacesService) {
   $scope.save = CharacterService.save
+
+  $scope.selectRace = function () {
+    var race = RacesService.getRace($scope.basicInfo.Race)
+    if (race.bonus == "Any") {
+      $scope.race = {size: race.size, bonus: {}}
+      $scope.openModal()
+    } else {
+      $scope.saveRace(race)
+    }
+  }
+
+  $scope.saveRace = function (race) {
+    $scope.race = {
+      bonus: race.bonus,
+    }
+    $scope.basicInfo.Size = race.size
+    CharacterService.save($scope)
+  }
+
+  $ionicModal.fromTemplateUrl('templates/racial-attribute-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  })
+  $scope.openModal = function() {
+    $scope.modal.show()
+  }
+  $scope.closeModal = function() {
+    $scope.race.bonus[$scope.basicInfo.bonusAttribute] = 2
+    $scope.modal.hide()
+    $scope.saveRace($scope.race)
+  }
+
   CharacterService.load($scope)
 })

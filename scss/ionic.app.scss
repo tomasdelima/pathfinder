@@ -111,11 +111,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   &.abilities, &.skills{
     .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
       font-size: 14px;
+      line-height: 40px;
     }
 
     .skill .modifier {
       position: relative;
-      top: 9px;
 
       .value, .ability { position: absolute; }
       .value { right: 70%; }
@@ -128,5 +128,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         top: 2px;
       }
     }
+  }
+}
+
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+
+  .modal-wrapper {
+    top: calc(50% - 200px);
+    position: relative;
+    height: 400px;
   }
 }

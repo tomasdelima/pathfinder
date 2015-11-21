@@ -1,6 +1,6 @@
 {
   "name": "Pathfinder Player Tools",
-  "app_id": "",
+  "app_id": "e04fe54a",
   "gulpStartupTasks": [
     "sass",
     "watch"

@@ -3,6 +3,9 @@ angular.module('pathfinder.services', [])
   function emptyCharacter () {
     return {
       basicInfo: {},
+      race: {
+        bonus: {},
+      },
       attributes: {
         Strength: [10],
         Dexterity: [10],
@@ -53,6 +56,7 @@ angular.module('pathfinder.services', [])
   function save (scope) {
     localStorage.character = JSON.stringify({
       basicInfo: scope.basicInfo,
+      race: scope.race,
       attributes: scope.attributes,
       skills: scope.skills,
     })
@@ -61,6 +65,7 @@ angular.module('pathfinder.services', [])
   function load (scope) {
     var character = localStorage.character ? JSON.parse(localStorage.character) : emptyCharacter()
     scope.basicInfo = character.basicInfo
+    scope.race = character.race
     scope.attributes = character.attributes
     scope.skills = character.skills
     console.log("Character loaded")
@@ -121,45 +126,49 @@ angular.module('pathfinder.services', [])
   return {
     getRace: function (raceName) {
       return {
-        "Half Orc": {
+        "Dwarf": {
           bonus: {
-            Strength: 2,
-          }
+            Constitution: 2,
+            Wisdom: 2,
+            Charisma: -2,
+          },
+          size: "Medium",
         },
         "Elf": {
           bonus: {
-            Strength: 2
-          }
-        },
-        "Half Elf": {
-          bonus: {
-            Strength: 2
-          }
-        },
-        "Human": {
-          bonus: {
-            Strength: 2
-          }
+            Dexterity: 2,
+            Intelligence: 2,
+            Constitution: -2,
+          },
+          size: "Medium",
         },
         "Gnome": {
           bonus: {
-            Strength: 2
-          }
+            Constitution: 2,
+            Charisma: 2,
+            Strength: -2,
+          },
+          size: "Small",
+        },
+        "Half-orc": {
+          bonus: "Any",
+          size: "Medium",
+        },
+        "Half-elf": {
+          bonus: "Any",
+          size: "Medium",
         },
         "Halfling": {
           bonus: {
-            Strength: 2
-          }
+            Dexterity: 2,
+            Charisma: 2,
+            Strength: -2,
+          },
+          size: "Small",
         },
         "Human": {
-          bonus: {
-            Strength: 2
-          }
-        },
-        "Dwarf": {
-          bonus: {
-            Constitution: 2
-          }
+          bonus: "Any",
+          size: "Medium",
         },
       }[raceName]
     }

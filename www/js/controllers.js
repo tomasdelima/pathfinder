@@ -1,9 +1,9 @@
 angular.module('pathfinder.controllers', [])
-.controller('CharacterCtrl', function($scope, CharacterFactory, SkillsService, RacesService) {
+.controller('CharacterCtrl', function ($scope, CharacterService, SkillsService, RacesService) {
   $scope.getAttributeTotal = function (attributeName) {
-    return $scope.attributes[attributeName].reduce(function(m, v) {
+    return Number($scope.attributes[attributeName].reduce(function (m, v) {
       return (Number(m) || 0) + (Number(v) || 0)
-    }) + Number($scope.getAttributeRacialBonus(attributeName))
+    })) + Number($scope.getAttributeRacialBonus(attributeName))
   }
 
   $scope.getAttributeRacialBonus = function (attributeName) {
@@ -17,7 +17,7 @@ angular.module('pathfinder.controllers', [])
   }
 
   $scope.getSkillTotal = function (skillName) {
-    return Number($scope.skills[skillName].reduce(function(m, v) {
+    return Number($scope.skills[skillName].reduce(function (m, v) {
       return (Number(m) || 0) + (Number(v) || 0)
     })) + Number($scope.getSkillModifier(skillName))
   }
@@ -30,19 +30,11 @@ angular.module('pathfinder.controllers', [])
     return $scope.getAttributeModifier($scope.getSkillAbility(skillName))
   }
 
-  $scope.saveCharacter = function () {
-    localStorage.character = JSON.stringify({
-      attributes: $scope.attributes,
-      skills: $scope.skills,
-    })
-    console.log("Character saved")
-  }
+  $scope.save = CharacterService.save
+  CharacterService.load($scope)
+})
 
-  $scope.loadCharacter = function () {
-    var character = localStorage.character ? JSON.parse(localStorage.character) : CharacterFactory.emptyCharacter()
-    $scope.attributes = character.attributes
-    $scope.skills = character.skills
-  }
-
-  $scope.loadCharacter()
+.controller('ProfileCtrl', function ($scope, CharacterService) {
+  $scope.save = CharacterService.save
+  CharacterService.load($scope)
 })

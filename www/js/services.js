@@ -1,55 +1,75 @@
 angular.module('pathfinder.services', [])
-.factory('CharacterFactory', function () {
-  return {
-    emptyCharacter: function () {
-      return {
-        attributes: {
-          Strength: [10],
-          Dexterity: [10],
-          Intelligence: [10],
-          Constitution: [10],
-          Wisdom: [10],
-          Charisma: [10]
-        },
-        skills: {
-          "Acrobatics": [""],
-          "Appraise": [""],
-          "Bluff": [""],
-          "Climb": [""],
-          "Craft": [""],
-          "Diplomacy": [""],
-          "Disable Device": [""],
-          "Disguise": [""],
-          "Escape Artist": [""],
-          "Fly": [""],
-          "Handle Animal": [""],
-          "Heal": [""],
-          "Intimidate": [""],
-          "Knowledge (arcana)": [""],
-          "Knowledge (dungeoneering)": [""],
-          "Knowledge (engineering)": [""],
-          "Knowledge (geography)": [""],
-          "Knowledge (history)": [""],
-          "Knowledge (local)": [""],
-          "Knowledge (nature)": [""],
-          "Knowledge (nobility)": [""],
-          "Knowledge (planes)": [""],
-          "Knowledge (religion)": [""],
-          "Linguistics": [""],
-          "Perception": [""],
-          "Perform": [""],
-          "Profession": [""],
-          "Ride": [""],
-          "Sense Motive": [""],
-          "Sleight of Hand": [""],
-          "Spellcraft": [""],
-          "Stealth": [""],
-          "Survival": [""],
-          "Swim": [""],
-          "Use Magic Device": [""],
-        }
-      }
+.service('CharacterService', function () {
+  function emptyCharacter () {
+    return {
+      basicInfo: {},
+      attributes: {
+        Strength: [10],
+        Dexterity: [10],
+        Intelligence: [10],
+        Constitution: [10],
+        Wisdom: [10],
+        Charisma: [10]
+      },
+      skills: {
+        "Acrobatics": [""],
+        "Appraise": [""],
+        "Bluff": [""],
+        "Climb": [""],
+        "Craft": [""],
+        "Diplomacy": [""],
+        "Disable Device": [""],
+        "Disguise": [""],
+        "Escape Artist": [""],
+        "Fly": [""],
+        "Handle Animal": [""],
+        "Heal": [""],
+        "Intimidate": [""],
+        "Knowledge (arcana)": [""],
+        "Knowledge (dungeoneering)": [""],
+        "Knowledge (engineering)": [""],
+        "Knowledge (geography)": [""],
+        "Knowledge (history)": [""],
+        "Knowledge (local)": [""],
+        "Knowledge (nature)": [""],
+        "Knowledge (nobility)": [""],
+        "Knowledge (planes)": [""],
+        "Knowledge (religion)": [""],
+        "Linguistics": [""],
+        "Perception": [""],
+        "Perform": [""],
+        "Profession": [""],
+        "Ride": [""],
+        "Sense Motive": [""],
+        "Sleight of Hand": [""],
+        "Spellcraft": [""],
+        "Stealth": [""],
+        "Survival": [""],
+        "Swim": [""],
+        "Use Magic Device": [""],
+      },
     }
+  }
+  function save (scope) {
+    localStorage.character = JSON.stringify({
+      basicInfo: scope.basicInfo,
+      attributes: scope.attributes,
+      skills: scope.skills,
+    })
+    console.log("Character saved")
+  }
+  function load (scope) {
+    var character = localStorage.character ? JSON.parse(localStorage.character) : emptyCharacter()
+    scope.basicInfo = character.basicInfo
+    scope.attributes = character.attributes
+    scope.skills = character.skills
+    console.log("Character loaded")
+  }
+
+  return {
+    emptyCharacter: emptyCharacter,
+    save: save,
+    load: load,
   }
 })
 
@@ -103,12 +123,7 @@ angular.module('pathfinder.services', [])
       return {
         "Half Orc": {
           bonus: {
-            Strength: 1,
-            Dexterity: 2,
-            Intelligence: 3,
-            Constitution: 4,
-            Wisdom: 5,
-            Charisma: 6
+            Strength: 2,
           }
         },
         "Elf": {

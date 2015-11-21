@@ -33,5 +33,15 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     }
   })
 
+  .state('tab.profile', {
+    url: '/profile',
+    views: {
+      'profile': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+
   $urlRouterProvider.otherwise('/tab/stats')
 })

@@ -1,0 +1,115 @@
+<ion-view view-title="Stats">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">
+        Basic information
+      </div>
+      <div class="item item-body basic-info">
+        <div class="name col-12">
+          <span class="label col-5">Character name</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Name"></span>
+        </div>
+        <div class="player col-12">
+          <span class="label col-5">Player name</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Player"></span>
+        </div>
+        <div class="level col-12">
+          <span class="label col-5">Character level</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Level"></span>
+        </div>
+        <div class="alignment col-6">
+          <span class="label col-5">Alignment</span>
+          <span class="value col-7">
+            <select ng-change="save(this)" ng-model="basicInfo.Alignment">
+              <option>Lawful Good</option>
+              <option>Lawful Neutral</option>
+              <option>Lawful Evil</option>
+              <option>Neutral Good</option>
+              <option>Neutral Neutral</option>
+              <option>Neutral Evil</option>
+              <option>Chaotic Good</option>
+              <option>Chaotic Neutral</option>
+              <option>Chaotic Evil</option>
+            </select>
+          </span>
+        </div>
+        <div class="campaign col-6">
+          <span class="label col-5">Campaign</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Campaign"></span>
+        </div>
+        <div class="homeland col-6">
+          <span class="label col-5">Homeland</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Homeland"></span>
+        </div>
+        <div class="deity col-6">
+          <span class="label col-5">Deity</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="basicInfo.Deity"></span>
+        </div>
+      </div>
+      <div class="item item-divider">
+        Physical aspets
+      </div>
+      <div class="item item-body basic-info">
+        <div class="race col-6">
+          <span class="label col-6">Race</span>
+          <span class="value col-6">
+            <select ng-change="save(this)" ng-model="basicInfo.Race">
+              <option>Human</option>
+              <option>Half Orc</option>
+              <option>Elf</option>
+              <option>Half Elf</option>
+              <option>Gnome</option>
+              <option>Halfling</option>
+              <option>Human</option>
+              <option>Dwarf</option>
+            </select>
+          </span>
+        </div>
+        <div class="size col-6">
+          <span class="label col-6">Size</span>
+          <span class="value col-6">
+            <select ng-change="save(this)" ng-model="basicInfo.Size">
+              <option>Fine</option>
+              <option>Diminutive</option>
+              <option>Tiny</option>
+              <option>Normal</option>
+              <option>Large</option>
+              <option>Huge</option>
+              <option>Gargantuan</option>
+              <option>Colossal</option>
+            </select>
+          </span>
+        </div>
+        <div class="gender col-6">
+          <span class="label col-6">Gender</span>
+          <span class="value col-6">
+            <select ng-change="save(this)" ng-model="basicInfo.Gender">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </span>
+        </div>
+        <div class="age col-6">
+          <span class="label col-6">Age</span>
+          <span class="value col-6"><input ng-change="save(this)" ng-model="basicInfo.Age"></span>
+        </div>
+        <div class="height col-6">
+          <span class="label col-6">Height</span>
+          <span class="value col-6"><input ng-change="save(this)" ng-model="basicInfo.Height"></span>
+        </div>
+        <div class="weight col-6">
+          <span class="label col-6">Weight</span>
+          <span class="value col-6"><input ng-change="save(this)" ng-model="basicInfo.Weight"></span>
+        </div>
+        <div class="eyes col-6">
+          <span class="label col-6">Eyes</span>
+          <span class="value col-6"><input ng-change="save(this)" ng-model="basicInfo.Eyes"></span>
+        </div>
+        <div class="hair col-6">
+          <span class="label col-6">Hair</span>
+          <span class="value col-6"><input ng-change="save(this)" ng-model="basicInfo.Hair"></span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

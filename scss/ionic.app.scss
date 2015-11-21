@@ -28,9 +28,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
       /*border: 1px solid red;*/
       display: inline-block;
+      height: 25px;
 
       &, input {
-        height: 25px;
         text-align: center;
 
         &.name {
@@ -57,6 +57,43 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+.basic-info {
+  font-size: 0px;
+
+  [class*="col-"] {
+    display: inline-block;
+    text-align: left ;
+    /*border: 1px solid red;*/
+    line-height: 31px;
+  }
+
+  .col-1  { width: calc(100%/12); }
+  .col-2  { width: calc(200%/12); }
+  .col-3  { width: calc(300%/12); }
+  .col-4  { width: calc(400%/12); }
+  .col-5  { width: calc(500%/12); }
+  .col-6  { width: calc(600%/12); }
+  .col-7  { width: calc(700%/12); }
+  .col-8  { width: calc(800%/12); }
+  .col-9  { width: calc(900%/12); }
+  .col-10 { width: calc(1000%/12); }
+  .col-11 { width: calc(1100%/12); }
+  .col-12 { width: calc(1200%/12); }
+
+  .label, .value {
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  .label { padding-left: 10px; }
+  .value {
+    input, select {
+      background: #fff;
+      width: 100%;
+    }
+  }
+}
+
 .item-divider {
   .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
     white-space: normal;
@@ -66,23 +103,30 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .item-body {
-  .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
+  input, select {
+    height: 25px;
     font-size: 12px;
   }
 
-  .skill .modifier {
-    position: relative;
-    top: 9px;
+  &.abilities, &.skills{
+    .name, .total, .modifier, .racial, .score, .temporary, .rank, .misc {
+      font-size: 14px;
+    }
 
-    .value, .ability { position: absolute; }
-    .value { right: 70%; }
-    .ability { left: 40%; }
-  }
-
-  .ability, .skill {
-    .score, .temporary, .rank, .misc {
+    .skill .modifier {
       position: relative;
-      top: 2px;
+      top: 9px;
+
+      .value, .ability { position: absolute; }
+      .value { right: 70%; }
+      .ability { left: 40%; }
+    }
+
+    .ability, .skill {
+      .score, .temporary, .rank, .misc {
+        position: relative;
+        top: 2px;
+      }
     }
   }
 }

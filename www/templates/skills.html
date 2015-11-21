@@ -15,7 +15,7 @@
       <span class="value">{{getSkillModifier(skillName)}}</span>
       <span class="ability">({{getSkillAbility(skillName).slice(0, 3)}})</span>
     </span>
-    <span class="rank"><input ng-change="saveCharacter()" ng-model="skillValues[0]"></span>
-    <span class="misc"><input ng-change="saveCharacter()" ng-model="skillValues[1]"></span>
+    <span class="rank"><input ng-change="save(this)" ng-model="skillValues[0]"></span>
+    <span class="misc"><input ng-change="save(this)" ng-model="skillValues[1]"></span>
   </div>
 </div>

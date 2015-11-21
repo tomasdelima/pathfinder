@@ -14,7 +14,7 @@
     <span class="total">{{getAttributeTotal(attributeName)}}</span>
     <span class="modifier">{{getAttributeModifier(attributeName)}}</span>
     <span class="racial">{{getAttributeRacialBonus(attributeName)}}</span>
-    <span class="score"><input ng-change="saveCharacter()" ng-model="attributeValues[0]"></span>
-    <span class="temporary"><input ng-change="saveCharacter()" ng-model="attributeValues[1]"></span>
+    <span class="score"><input ng-change="save(this)" ng-model="attributeValues[0]"></span>
+    <span class="temporary"><input ng-change="save(this)" ng-model="attributeValues[1]"></span>
   </div>
 </div>

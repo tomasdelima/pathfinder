@@ -43,5 +43,15 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     }
   })
 
+  .state('tab.combat', {
+    url: '/combat',
+    views: {
+      'combat': {
+        templateUrl: 'templates/combat.html',
+        controller: 'CombatCtrl'
+      }
+    }
+  })
+
   $urlRouterProvider.otherwise('/tab/stats')
 })

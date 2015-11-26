@@ -1,0 +1,238 @@
+<ion-view view-title="Combat">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">General</div>
+      <div class="item item-body">
+        <div class="name col-6">
+          <span class="label col-5">PV</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="combat.PV"></span>
+        </div>
+        <div class="name col-6">
+          <span class="label col-5">Current PV</span>
+          <span class="value col-7"><input ng-change="save(this)" ng-model="combat.currentPV"></span>
+        </div>
+        <div class="name col-6 with-subtitle">
+          <span class="label col-4">Iniciative</span>
+          <span class="value col-2">
+            {{combat.iniciative.total()}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-2 with-equals">
+            {{combat.dexterityModifier()}}
+            <div class="subtitle">dex</div>
+          </span>
+          <span class="value col-4 with-plus">
+            <input ng-change="save(this)" ng-model="combat.iniciative.misc">
+            <div class="subtitle">misc</div>
+          </span>
+        </div>
+        <div class="col-6 with-subtitle">
+          <span class="label col-5">Speed</span>
+          <span class="value col-4">
+            <input ng-change="save(this)" ng-model="speed.land">
+            <div class="subtitle">meters</div>
+          </span>
+          <span class="value col-3">
+            {{speed.squares('land')}}
+            <div class="subtitle">squares</div>
+          </span>
+        </div>
+      </div>
+      <div class="item item-divider">Defence</div>
+      <div class="item item-body">
+        <div class="ac col-12 with-subtitle">
+          <span class="label col-1">AC</span>
+          <span class="value col-1">
+            {{combat.ac.total()}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-1 with-equals">10</span>
+          <span class="value col-1 with-plus">
+            {{combat.dexterityModifier()}}
+            <div class="subtitle">dex</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.armor">
+            <div class="subtitle">armor</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.shield">
+            <div class="subtitle">shield</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.natural">
+            <div class="subtitle">natural</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.size">
+            <div class="subtitle">size</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.deflection">
+            <div class="subtitle">deflection</div>
+          </span>
+          <span class="value col-1 with-plus">
+            <input ng-change="save(this)" ng-model="combat.ac.misc">
+            <div class="subtitle">misc</div>
+          </span>
+        </div>
+        <div class="name col-6 with-subtitle">
+          <span class="label col-4">Touch</span>
+          <span class="value col-2">
+            {{combat.touch.total()}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-2 with-equals">
+            {{combat.touch.base()}}
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.touch.misc">
+            <div class="subtitle">misc</div>
+          </span>
+        </div>
+        <div class="name col-6 with-subtitle">
+          <span class="label col-6">Flat-footed</span>
+          <span class="value col-2">
+            {{combat.flatFooted.total()}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-2 with-equals">
+            {{combat.flatFooted.base()}}
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.flatFooted.misc">
+            <div class="subtitle">misc</div>
+          </span>
+        </div>
+        <div class="name col-12 with-subtitle">
+          <span class="label col-2">Will</span>
+          <span class="value col-1">
+            {{combat.savings.total('will')}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-1 with-equals">
+            {{combat.savings.base('will')}}
+            <div class="subtitle">base</div>
+          </span>
+          <span class="value col-1 with-plus">
+            {{combat.savings.attrModifier('will')}}
+            <div class="subtitle">wis</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.will.magic">
+            <div class="subtitle">magic</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.will.misc">
+            <div class="subtitle">misc</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.will.temp">
+            <div class="subtitle">temp</div>
+          </span>
+        </div>
+        <div class="name col-12 with-subtitle">
+          <span class="label col-2">Fortitude</span>
+          <span class="value col-1">
+            {{combat.savings.total('fortitude')}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-1 with-equals">
+            {{combat.savings.base('fortitude')}}
+            <div class="subtitle">base</div>
+          </span>
+          <span class="value col-1 with-plus">
+            {{combat.savings.attrModifier('fortitude')}}
+            <div class="subtitle">con</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.fortitude.magic">
+            <div class="subtitle">magic</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.fortitude.misc">
+            <div class="subtitle">misc</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.fortitude.temp">
+            <div class="subtitle">temp</div>
+          </span>
+        </div>
+        <div class="name col-12 with-subtitle">
+          <span class="label col-2">Reflex</span>
+          <span class="value col-1">
+            {{combat.savings.total('reflex')}}
+            <div class="subtitle">total</div>
+          </span>
+          <span class="value col-1 with-equals">
+            {{combat.savings.base('reflex')}}
+            <div class="subtitle">base</div>
+          </span>
+          <span class="value col-1 with-plus">
+            {{combat.savings.attrModifier('reflex')}}
+            <div class="subtitle">dex</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.reflex.magic">
+            <div class="subtitle">magic</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.reflex.misc">
+            <div class="subtitle">misc</div>
+          </span>
+          <span class="value col-2 with-plus">
+            <input ng-change="save(this)" ng-model="combat.savings.reflex.temp">
+            <div class="subtitle">temp</div>
+          </span>
+        </div>
+      </div>
+      <div class="item item-divider">Other movement</div>
+      <div class="item item-body">
+        <div class="col-6 with-subtitle">
+          <span class="label col-5">Swim</span>
+          <span class="value col-4">
+            <input ng-change="save(this)" ng-model="speed.swim">
+            <div class="subtitle">meters</div>
+          </span>
+          <span class="value col-3">
+            {{speed.squares('swim')}}
+            <div class="subtitle">squares</div>
+          </span>
+        </div>
+        <div class="col-6 with-subtitle">
+          <span class="label col-5">Fly</span>
+          <span class="value col-4">
+            <input ng-change="save(this)" ng-model="speed.fly">
+            <div class="subtitle">meters</div>
+          </span>
+          <span class="value col-3">
+            {{speed.squares('fly')}}
+            <div class="subtitle">squares</div>
+          </span>
+        </div>
+        <div class="col-6 with-subtitle">
+          <span class="label col-5">Burrow</span>
+          <span class="value col-4">
+            <input ng-change="save(this)" ng-model="speed.burrow">
+            <div class="subtitle">meters</div>
+          </span>
+          <span class="value col-3">
+            {{speed.squares('burrow')}}
+            <div class="subtitle">squares</div>
+          </span>
+        </div>
+        <div class="col-6 with-subtitle">
+          <span class="label col-5">Climb</span>
+          <span class="value col-4">
+            <input ng-change="save(this)" ng-model="speed.climb">
+            <div class="subtitle">meters</div>
+          </span>
+          <span class="value col-3">
+            {{speed.squares('climb')}}
+            <div class="subtitle">squares</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

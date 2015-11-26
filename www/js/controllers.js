@@ -6,22 +6,6 @@ angular.module('pathfinder.controllers', [])
     })) + Number($scope.getAttributeRacialBonus(attributeName))
   }
 
-  $scope.getAttributeRacialBonus = function (attributeName) {
-    var racialBonus = $scope.race.bonus[attributeName] || ''
-    return (racialBonus > 0 ? '+' : '') + racialBonus
-  }
-
-  $scope.getAttributeModifier = function (attributeName) {
-    var modifier = Math.floor(($scope.getAttributeTotal(attributeName) - 10)/2)
-    return (modifier > 0 ? '+' : '') + modifier
-  }
-
-  $scope.getSkillTotal = function (skillName) {
-    return Number($scope.skills[skillName].reduce(function (m, v) {
-      return (Number(m) || 0) + (Number(v) || 0)
-    })) + Number($scope.getSkillModifier(skillName))
-  }
-
   $scope.getSkillAbility = function (skillName) {
     return SkillsService.skillAbility(skillName)
   }
@@ -30,6 +14,9 @@ angular.module('pathfinder.controllers', [])
     return $scope.getAttributeModifier($scope.getSkillAbility(skillName))
   }
 
+  $scope.getAttributeTotal = CharacterService.getAttributeTotal,
+  $scope.getAttributeRacialBonus = CharacterService.getAttributeRacialBonus,
+  $scope.getAttributeModifier = CharacterService.getAttributeModifier,
   $scope.save = CharacterService.save
   $scope.$on('$ionicView.afterEnter', function(){
     CharacterService.load($scope)
@@ -40,7 +27,7 @@ angular.module('pathfinder.controllers', [])
   $scope.save = CharacterService.save
 
   $scope.selectRace = function () {
-    var race = RacesService.getRace($scope.basicInfo.Race)
+    var race = RacesService.getRace($scope.profile.Race)
     if (race.bonus == "Any") {
       $scope.race = {size: race.size, bonus: {}}
       $scope.openModal()
@@ -53,7 +40,7 @@ angular.module('pathfinder.controllers', [])
     $scope.race = {
       bonus: race.bonus,
     }
-    $scope.basicInfo.Size = race.size
+    $scope.profile.Size = race.size
     CharacterService.save($scope)
   }
 
@@ -67,10 +54,59 @@ angular.module('pathfinder.controllers', [])
     $scope.modal.show()
   }
   $scope.closeModal = function() {
-    $scope.race.bonus[$scope.basicInfo.bonusAttribute] = 2
+    $scope.race.bonus[$scope.profile.bonusAttribute] = 2
     $scope.modal.hide()
     $scope.saveRace($scope.race)
   }
 
   CharacterService.load($scope)
+})
+
+.controller('CombatCtrl', function ($scope, CharacterService) {
+  CharacterService.load($scope)
+
+  $scope.speed.squares = function (mean) {
+    return Math.floor($scope.speed[mean] / 1.5) || 0
+  }
+
+  $scope.combat.iniciative.total = function () {
+    return $scope.combat.dexterityModifier() + Number($scope.combat.iniciative.misc || 0)
+  }
+  $scope.combat.dexterityModifier = function () {
+    return Number(CharacterService.getAttributeModifier('Dexterity'))
+  }
+  $scope.combat.ac.base = function () {
+    return 10 + $scope.combat.dexterityModifier()
+  }
+  $scope.combat.ac.total = function () {
+    return $scope.combat.ac.base() + Number($scope.combat.ac.armor || 0) + Number($scope.combat.ac.shield || 0) + Number($scope.combat.ac.natural || 0) + Number($scope.combat.ac.size || 0) + Number($scope.combat.ac.deflection || 0) + Number($scope.combat.ac.misc || 0)
+  }
+  $scope.combat.touch.base = function () {
+    return $scope.combat.ac.base() + Number($scope.combat.ac.natural || 0) + Number($scope.combat.ac.size || 0) + Number($scope.combat.ac.deflection || 0)
+  }
+  $scope.combat.touch.total = function () {
+    return $scope.combat.touch.base() + Number($scope.combat.touch.misc || 0)
+  }
+  $scope.combat.flatFooted.base = function () {
+    return $scope.combat.ac.base() + Number($scope.combat.ac.armor || 0) + Number($scope.combat.ac.shield || 0) + Number($scope.combat.ac.natural || 0)
+  }
+  $scope.combat.flatFooted.total = function () {
+    return $scope.combat.flatFooted.base() + Number($scope.combat.flatFooted.misc || 0)
+  }
+  $scope.combat.savings.attrModifier = function (type) {
+    var attr = {
+      will: 'Wisdom',
+      fortitude: 'Constitution',
+      reflex: 'Dexterity',
+    }[type]
+    return Number(CharacterService.getAttributeModifier(attr))
+  }
+  $scope.combat.savings.total = function (type) {
+    return $scope.combat.savings.base() + $scope.combat.savings.attrModifier(type) + Number($scope.combat.savings[type].magic || 0) + Number($scope.combat.savings[type].misc || 0) + Number($scope.combat.savings[type].temp || 0)
+  }
+  $scope.combat.savings.base = function () {
+    return 0
+  }
+
+  $scope.save = CharacterService.save
 })

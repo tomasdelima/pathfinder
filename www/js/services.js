@@ -1,8 +1,8 @@
 angular.module('pathfinder.services', [])
 .service('CharacterService', function () {
   function emptyCharacter () {
-    return {
-      basicInfo: {},
+    var self = {
+      profile: {},
       race: {
         bonus: {},
       },
@@ -51,30 +51,70 @@ angular.module('pathfinder.services', [])
         "Swim": [""],
         "Use Magic Device": [""],
       },
+      combat: {
+        iniciative: {},
+        ac: {},
+        touch: {},
+        flatFooted: {},
+        savings: {
+          will: {},
+          reflex: {},
+          fortitude: {},
+        },
+      },
+      speed: {},
     }
+    return self
   }
   function save (scope) {
     localStorage.character = JSON.stringify({
-      basicInfo: scope.basicInfo,
+      profile: scope.profile,
       race: scope.race,
       attributes: scope.attributes,
       skills: scope.skills,
+      combat: scope.combat,
+      speed: scope.speed,
     })
     console.log("Character saved")
   }
+  function loadRawCharacter () {
+    return localStorage.character ? JSON.parse(localStorage.character) : emptyCharacter()
+  }
   function load (scope) {
-    var character = localStorage.character ? JSON.parse(localStorage.character) : emptyCharacter()
-    scope.basicInfo = character.basicInfo
+    var character = loadRawCharacter()
+    scope.profile = character.profile
     scope.race = character.race
     scope.attributes = character.attributes
     scope.skills = character.skills
+    scope.combat = character.combat
+    scope.speed = character.speed
+
     console.log("Character loaded")
+  }
+  function getAttributeTotal (attributeName) {
+    var character = loadRawCharacter()
+    return Number(character.attributes[attributeName].reduce(function (m, v) {
+      return (Number(m) || 0) + (Number(v) || 0)
+    })) + Number(getAttributeRacialBonus(attributeName))
+  }
+  function getAttributeRacialBonus (attributeName) {
+    var character = loadRawCharacter()
+    var racialBonus = character.race.bonus[attributeName] || ''
+    return (racialBonus > 0 ? '+' : '') + racialBonus
+  }
+  function getAttributeModifier (attributeName) {
+    var character = loadRawCharacter()
+    var modifier = Math.floor((getAttributeTotal(attributeName) - 10)/2)
+    return (modifier > 0 ? '+' : '') + modifier
   }
 
   return {
     emptyCharacter: emptyCharacter,
     save: save,
     load: load,
+    getAttributeTotal: getAttributeTotal,
+    getAttributeRacialBonus: getAttributeRacialBonus,
+    getAttributeModifier: getAttributeModifier,
   }
 })
 

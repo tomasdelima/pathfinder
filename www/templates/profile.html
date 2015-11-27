@@ -1,22 +1,12 @@
 <ion-view view-title="Stats">
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">
-        Basic information
-      </div>
+      <div class="item item-divider">Basic information</div>
       <div class="item item-body profile">
-        <div class="name col-12">
-          <span class="label col-5">Character name</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Name"></span>
-        </div>
-        <div class="player col-12">
-          <span class="label col-5">Player name</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Player"></span>
-        </div>
-        <div class="level col-12">
-          <span class="label col-5">Character level</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Level"></span>
-        </div>
+        <generic-field label='"Character name"' namespace='profile.Name' col-width="12"></generic-field>
+        <generic-field label='"Player name"' namespace='profile.Player' col-width="12"></generic-field>
+        <generic-field label='"Character level"' namespace='profile.Level' col-width="12"></generic-field>
+
         <div class="alignment col-6">
           <span class="label col-5">Alignment</span>
           <span class="value col-7">
@@ -33,22 +23,13 @@
             </select>
           </span>
         </div>
-        <div class="campaign col-6">
-          <span class="label col-5">Campaign</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Campaign"></span>
-        </div>
-        <div class="homeland col-6">
-          <span class="label col-5">Homeland</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Homeland"></span>
-        </div>
-        <div class="deity col-6">
-          <span class="label col-5">Deity</span>
-          <span class="value col-7"><input ng-change="save(this)" ng-model="profile.Deity"></span>
-        </div>
+
+        <generic-field label='"Campaign"' namespace='profile.Campaign'></generic-field>
+        <generic-field label='"Homeland"' namespace='profile.Homeland'></generic-field>
+        <generic-field label='"Deity"' namespace='profile.Deity'></generic-field>
       </div>
-      <div class="item item-divider">
-        Physical aspets
-      </div>
+
+      <div class="item item-divider">Physical aspets</div>
       <div class="item item-body profile">
         <div class="race col-6">
           <span class="label col-6">Race</span>
@@ -89,26 +70,12 @@
             </select>
           </span>
         </div>
-        <div class="age col-6">
-          <span class="label col-6">Age</span>
-          <span class="value col-6"><input ng-change="save(this)" ng-model="profile.Age"></span>
-        </div>
-        <div class="height col-6">
-          <span class="label col-6">Height</span>
-          <span class="value col-6"><input ng-change="save(this)" ng-model="profile.Height"></span>
-        </div>
-        <div class="weight col-6">
-          <span class="label col-6">Weight</span>
-          <span class="value col-6"><input ng-change="save(this)" ng-model="profile.Weight"></span>
-        </div>
-        <div class="eyes col-6">
-          <span class="label col-6">Eyes</span>
-          <span class="value col-6"><input ng-change="save(this)" ng-model="profile.Eyes"></span>
-        </div>
-        <div class="hair col-6">
-          <span class="label col-6">Hair</span>
-          <span class="value col-6"><input ng-change="save(this)" ng-model="profile.Hair"></span>
-        </div>
+        <generic-field label='"Age"' namespace='profile.Age' label-col-width="6"></generic-field>
+        <generic-field label='"Height"' namespace='profile.Height' label-col-width="6"></generic-field>
+        <generic-field label='"Weight"' namespace='profile.Weight' label-col-width="6"></generic-field>
+        <generic-field label='"Eyes"' namespace='profile.Eyes' label-col-width="6"></generic-field>
+        <generic-field label='"Hair"' namespace='profile.Hair' label-col-width="6"></generic-field>
+
       </div>
     </div>
   </ion-content>

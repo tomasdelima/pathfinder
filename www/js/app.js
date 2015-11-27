@@ -1,4 +1,4 @@
-angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.services'])
+angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.services', 'pathfinder.directives'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

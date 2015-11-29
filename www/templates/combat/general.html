@@ -1,0 +1,31 @@
+<div class="item item-divider">General</div>
+<div class="item item-body">
+  <generic-field label='"PV"' namespace='combat.PV'></generic-field>
+  <generic-field label='"Current PV"' namespace='combat.currentPV'></generic-field>
+  <div class="name col-6 with-subtitle">
+    <span class="label col-4">Iniciative</span>
+    <span class="value col-2">
+      {{combat.iniciative.total()}}
+      <div class="subtitle">total</div>
+    </span>
+    <span class="value col-2 with-equals">
+      {{combat.dexterityModifier()}}
+      <div class="subtitle">dex</div>
+    </span>
+    <span class="value col-4 with-plus">
+      <input ng-change="save(this)" ng-model="combat.iniciative.misc">
+      <div class="subtitle">misc</div>
+    </span>
+  </div>
+  <div class="col-6 with-subtitle">
+    <span class="label col-5">Speed</span>
+    <span class="value col-4">
+      <input ng-change="save(this)" ng-model="speed.land">
+      <div class="subtitle">meters</div>
+    </span>
+    <span class="value col-3">
+      {{speed.squares('land')}}
+      <div class="subtitle">squares</div>
+    </span>
+  </div>
+</div>

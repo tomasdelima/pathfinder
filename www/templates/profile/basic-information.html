@@ -1,0 +1,27 @@
+<div class="item item-divider">Basic information</div>
+<div class="item item-body profile">
+  <generic-field label='"Character name"' namespace='profile.Name' col-width="12"></generic-field>
+  <generic-field label='"Player name"' namespace='profile.Player' col-width="12"></generic-field>
+  <generic-field label='"Character level"' namespace='profile.Level' col-width="12"></generic-field>
+
+  <div class="alignment col-12">
+    <span class="label col-5">Alignment</span>
+    <span class="value col-7">
+      <select ng-change="save(this)" ng-model="profile.Alignment">
+        <option>Lawful Good</option>
+        <option>Lawful Neutral</option>
+        <option>Lawful Evil</option>
+        <option>Neutral Good</option>
+        <option>Neutral Neutral</option>
+        <option>Neutral Evil</option>
+        <option>Chaotic Good</option>
+        <option>Chaotic Neutral</option>
+        <option>Chaotic Evil</option>
+      </select>
+    </span>
+  </div>
+
+  <generic-field label='"Campaign"' namespace='profile.Campaign' col-width="12"></generic-field>
+  <generic-field label='"Homeland"' namespace='profile.Homeland'></generic-field>
+  <generic-field label='"Deity"' namespace='profile.Deity'></generic-field>
+</div>

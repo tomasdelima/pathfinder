@@ -27,7 +27,7 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     url: '/stats',
     views: {
       'stats': {
-        templateUrl: 'templates/stats.html',
+        templateUrl: 'templates/stats/stats.html',
         controller: 'CharacterCtrl'
       }
     }
@@ -37,7 +37,7 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     url: '/profile',
     views: {
       'profile': {
-        templateUrl: 'templates/profile.html',
+        templateUrl: 'templates/profile/profile.html',
         controller: 'ProfileCtrl'
       }
     }
@@ -47,7 +47,7 @@ angular.module('pathfinder', ['ionic', 'pathfinder.controllers', 'pathfinder.ser
     url: '/combat',
     views: {
       'combat': {
-        templateUrl: 'templates/combat.html',
+        templateUrl: 'templates/combat/combat.html',
         controller: 'CombatCtrl'
       }
     }

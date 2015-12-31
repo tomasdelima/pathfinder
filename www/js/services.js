@@ -61,6 +61,13 @@ angular.module('pathfinder.services', [])
           reflex: {},
           fortitude: {},
         },
+        attack: {
+          bab: 2,
+        },
+        weapon: {
+          attack: {},
+          damage: {},
+        },
       },
       speed: {},
     }

@@ -1,0 +1,51 @@
+<div class="item item-divider">Weapon</div>
+<div class="item item-body">
+  <generic-field label='"Name"' namespace='combat.weapon.name' col-width="12"></generic-field>
+  <generic-field label='"Damage dice"' namespace='combat.weapon.damage.dice' col-width="12"></generic-field>
+
+
+  <div class="name col-12 with-subtitle">
+    <span class="label col-2">Attack</span>
+    <span class="value col-1">
+      {{combat.weapon.attack.total()}}
+      <div class="subtitle">total</div>
+    </span>
+    <span class="value col-1 with-equals">
+      {{combat.attack.bab}}
+      <div class="subtitle">BAB</div>
+    </span>
+    <span class="value col-1 with-plus">
+      {{combat.strengthModifier()}}
+      <div class="subtitle">str</div>
+    </span>
+    <span class="value col-2 with-plus">
+      <input ng-change="save(this)" ng-model="combat.weapon.attackBonus">
+      <div class="subtitle">weapon</div>
+    </span>
+    <span class="value col-2 with-plus">
+      <input ng-change="save(this)" ng-model="combat.weapon.attackBonusTemp">
+      <div class="subtitle">temp</div>
+    </span>
+  </div>
+
+  <div class="name col-12 with-subtitle">
+    <span class="label col-2">Damage</span>
+    <span class="value col-1">
+      {{combat.weapon.damage.total()}}
+      <div class="subtitle">total</div>
+    </span>
+    <span class="value col-1 with-equals">
+      {{combat.strengthModifier()}}
+      <div class="subtitle">str</div>
+    </span>
+    <span class="value col-2 with-plus">
+      <input ng-change="save(this)" ng-model="combat.weapon.damageBonus">
+      <div class="subtitle">weapon</div>
+    </span>
+    <span class="value col-2 with-plus">
+      <input ng-change="save(this)" ng-model="combat.weapon.damageBonusTemp">
+      <div class="subtitle">temp</div>
+    </span>
+  </div>
+
+</div>

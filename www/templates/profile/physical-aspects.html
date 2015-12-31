@@ -1,8 +1,8 @@
 <div class="item item-divider">Physical aspets</div>
 <div class="item item-body profile">
-  <div class="race col-6">
-    <span class="label col-6">Race</span>
-    <span class="value col-6">
+  <div class="race">
+    <span class="label col-5">Race</span>
+    <span class="value col-7">
       <select ng-change="selectRace()" ng-model="profile.Race">
         <option>Dwarf</option>
         <option>Elf</option>
@@ -14,10 +14,10 @@
       </select>
     </span>
   </div>
-  <div class="size col-6">
-    <span class="label col-6">Size</span>
-    <span class="value col-6">
-      <select ng-change="save(this)" ng-model="profile.Size">
+  <div class="size">
+    <span class="label col-5">Size</span>
+    <span class="value col-7">
+      <select ng-change="saveOld(this)" ng-model="profile.Size">
         <option>Fine</option>
         <option>Diminutive</option>
         <option>Tiny</option>
@@ -30,18 +30,18 @@
       </select>
     </span>
   </div>
-  <div class="gender col-6">
-    <span class="label col-6">Gender</span>
-    <span class="value col-6">
-      <select ng-change="save(this)" ng-model="profile.Gender">
+  <div class="gender">
+    <span class="label col-5">Gender</span>
+    <span class="value col-7">
+      <select ng-change="saveOld(this)" ng-model="profile.Gender">
         <option>Male</option>
         <option>Female</option>
       </select>
     </span>
   </div>
-  <generic-field label='"Age"' namespace='profile.Age' label-col-width="6"></generic-field>
-  <generic-field label='"Height"' namespace='profile.Height' label-col-width="6"></generic-field>
-  <generic-field label='"Weight"' namespace='profile.Weight' label-col-width="6"></generic-field>
-  <generic-field label='"Eyes"' namespace='profile.Eyes' label-col-width="6"></generic-field>
-  <generic-field label='"Hair"' namespace='profile.Hair' label-col-width="6"></generic-field>
+  <generic-field label='"Age"' namespace='profile.Age' save="save('profile.Age', arg)"></generic-field>
+  <generic-field label='"Height"' namespace='profile.Height' save="save('profile.Height', arg)"></generic-field>
+  <generic-field label='"Weight"' namespace='profile.Weight' save="save('profile.Weight', arg)"></generic-field>
+  <generic-field label='"Eyes"' namespace='profile.Eyes' save="save('profile.Eyes', arg)"></generic-field>
+  <generic-field label='"Hair"' namespace='profile.Hair' save="save('profile.Hair', arg)"></generic-field>
 </div>

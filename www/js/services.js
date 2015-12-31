@@ -1,5 +1,5 @@
 angular.module('pathfinder.services', [])
-.service('CharacterService', function () {
+.service('CharacterService', function (SkillsService) {
   function emptyCharacter () {
     var self = {
       profile: {},
@@ -84,6 +84,13 @@ angular.module('pathfinder.services', [])
     })
     console.log("Character saved")
   }
+  function saveField (field_path, value) {
+    var character = loadRawCharacter(),
+        string = 'character.' + field_path + '="' + value + '"'
+    eval(string)
+    localStorage.character = JSON.stringify(character)
+    console.log("Character saved: " + string)
+  }
   function loadRawCharacter () {
     return localStorage.character ? JSON.parse(localStorage.character) : emptyCharacter()
   }
@@ -105,23 +112,32 @@ angular.module('pathfinder.services', [])
     })) + Number(getAttributeRacialBonus(attributeName))
   }
   function getAttributeRacialBonus (attributeName) {
-    var character = loadRawCharacter()
-    var racialBonus = character.race.bonus[attributeName] || ''
+    var character = loadRawCharacter(),
+        racialBonus = character.race.bonus[attributeName] || ''
     return (racialBonus > 0 ? '+' : '') + racialBonus
   }
   function getAttributeModifier (attributeName) {
-    var character = loadRawCharacter()
-    var modifier = Math.floor((getAttributeTotal(attributeName) - 10)/2)
-    return (modifier > 0 ? '+' : '') + modifier
+    var character = loadRawCharacter(),
+        modifier = Math.floor((getAttributeTotal(attributeName) - 10)/2)
+    return modifier
+  }
+  function getSkillTotal (skillName) {
+    var attribute = Number(getAttributeModifier(SkillsService.skillAbility(skillName))) || 0,
+        characterSkills = loadRawCharacter().skills[skillName],
+        rank = Number(characterSkills[0]) || 0,
+        misk = Number(characterSkills[1]) || 0
+    return attribute + rank + misk
   }
 
   return {
     emptyCharacter: emptyCharacter,
     save: save,
+    saveField: saveField,
     load: load,
     getAttributeTotal: getAttributeTotal,
     getAttributeRacialBonus: getAttributeRacialBonus,
     getAttributeModifier: getAttributeModifier,
+    getSkillTotal: getSkillTotal,
   }
 })
 

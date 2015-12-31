@@ -1,8 +1,9 @@
 <div class="item item-divider">General</div>
 <div class="item item-body">
-  <generic-field label='"PV"' namespace='combat.PV'></generic-field>
-  <generic-field label='"Current PV"' namespace='combat.currentPV'></generic-field>
-  <div class="name col-6 with-subtitle">
+  <generic-field label='"PV"' namespace='combat.PV' save="save('combat.PV', arg)"></generic-field>
+  <generic-field label='"Current PV"' namespace='combat.currentPV' save="save('combat.currentPV', arg)"></generic-field>
+
+  <div class="name col-12 with-subtitle">
     <span class="label col-4">Iniciative</span>
     <span class="value col-2">
       {{combat.iniciative.total()}}
@@ -13,14 +14,14 @@
       <div class="subtitle">dex</div>
     </span>
     <span class="value col-4 with-plus">
-      <input ng-change="save(this)" ng-model="combat.iniciative.misc">
+      <input ng-change="saveOld(this)" ng-model="combat.iniciative.misc">
       <div class="subtitle">misc</div>
     </span>
   </div>
-  <div class="col-6 with-subtitle">
+  <div class="col-12 with-subtitle">
     <span class="label col-5">Speed</span>
     <span class="value col-4">
-      <input ng-change="save(this)" ng-model="speed.land">
+      <input ng-change="saveOld(this)" ng-model="speed.land">
       <div class="subtitle">meters</div>
     </span>
     <span class="value col-3">

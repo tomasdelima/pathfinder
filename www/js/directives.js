@@ -1,19 +1,13 @@
 angular.module('pathfinder.directives', [])
+
 .directive('genericField', function() {
   return {
+    restrict: 'AE',
     scope: {
-      colWidth: '=',
-      labelColWidth: '=',
-      label: '=',
-      namespace: '=',
-      ngChange: '&',
+      namespace: "=",
+      label: "=",
       save: '&',
     },
     templateUrl: 'directives/generic-field.html',
-    link: function(scope, element, attr) {
-      element.on('keyup', function(event) {
-        console.log(scope, element, attr)
-      })
-    }
   }
 })
